@@ -13,6 +13,7 @@ const services = [
       'Creamos esculturas e instalaciones arquitectónicas/sonoras adaptadas a tu entorno o evento. Artefactos que amplifican los sonidos de la naturaleza y se convierten en un punto de interés visual y sensorial para tus huéspedes, visitantes y asistentes.',
     src: '/images/services-2.jpg',
     alt: 'Dos personas revisando un mapa al aire libre',
+    url: 'https://www.escuchador.es',
   },
   {
     title: 'Talleres y formación',
@@ -42,15 +43,23 @@ const services = [
 
   <div class="wrap">
     <div class="services__grid">
-      {services.map((s) => (
-        <article class="service-card">
-          <div class="service-card__frame">
-            <img src={s.src} alt={s.alt} loading="lazy" />
-          </div>
-          <h3 class="service-card__title">{s.title}</h3>
-          <p class="service-card__desc">{s.description}</p>
-        </article>
-      ))}
+     {services.map((s) => {
+  const CardTag = s.url ? 'a' : 'div';
+  return (
+    <CardTag
+      class="service-card"
+      href={s.url}
+      target={s.url ? '_blank' : undefined}
+      rel={s.url ? 'noopener noreferrer' : undefined}
+    >
+      <div class="service-card__frame">
+        <img src={s.src} alt={s.alt} loading="lazy" />
+      </div>
+      <h3 class="service-card__title">{s.title}</h3>
+      <p class="service-card__desc">{s.description}</p>
+    </CardTag>
+  );
+})}
     </div>
   </div>
 </section>
@@ -61,7 +70,16 @@ const services = [
     margin-bottom: 2rem;
     padding-block: clamp(3rem, 8vw, 6rem);
   }
+a.service-card {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
 
+a.service-card:hover {
+  opacity: 0.85;
+}
   .eyebrow_inner {
     font-clamp: 1.75rem, 9.5vw, 3rem;
     letter-spacing: 0.12em;
