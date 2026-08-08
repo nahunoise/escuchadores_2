@@ -1,0 +1,106 @@
+---
+const columns = [
+  {
+    title: 'Hoteles ecoturísticos y fincas',
+    items: [
+      'Atrae al nuevo viajero con mayor poder adquisitivo',
+      'Innovación en las experiencias',
+      'Embellece tu paisaje',
+      'Vuelve tangible un valor como el sonido',
+    ],
+  },
+  {
+    title: 'Aulas ambientales y Parques naturales',
+    items: [
+      'Aumenta más visitantes',
+      'Experiencias más interactivas e inmersivas',
+      'Un diferencial a nivel educativo y de contenido',
+      'Contenido exclusivo propio del territorio',
+    ],
+  },
+  {
+    title: 'Empresas y organizaciones',
+    items: [
+      'Reducción de estrés digital y burnout',
+      'Desarrollo de Soft skill de escucha activa',
+      'Cohesión de equipo no competitiva',
+      'Storytelling sonoro',
+    ],
+  },
+];
+---
+
+<section class="section section--cream benefits">
+  <div class="wrap">
+    <p class="eyebrow_inner">Beneficios</p>
+
+    <div class="benefits__grid">
+      {columns.map((col) => (
+        <div class="benefits__col">
+          <h3>{col.title}</h3>
+          <ul>
+            {col.items.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .benefits__title {
+    text-align: center;
+    font-size: var(--step-h2);
+    margin-bottom: 2.5rem;
+    font-size: clamp(2.75rem, 3.5vw, 3.25rem);
+  }
+
+  .eyebrow_inner {
+  text-align: center;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 800;
+  margin-bottom: 2rem;
+}
+
+  .benefits__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(1.5rem, 4vw, 3rem);
+  }
+
+  .benefits__col h3 {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin-bottom: 0.9rem;
+  }
+
+  .benefits__col li {
+    position: relative;
+    padding-left: 1.1em;
+    margin-bottom: 0.5em;
+    color: var(--color-ink-soft);
+    font-size: 0.95rem;
+  }
+
+  .benefits__col li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.6em;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: currentColor;
+  }
+
+  @media (max-width: 780px) {
+    .benefits__grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+  }
+</style>

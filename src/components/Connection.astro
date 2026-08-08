@@ -1,0 +1,63 @@
+---
+---
+
+<section class="section section--cream connection">
+  <div class="wrap">
+    <h2 class="connection__title">
+      Creando conexiones más profundas e inmersivas con la naturaleza.
+    </h2>
+
+    <div class="connection__grid">
+      <p>
+        Conectarnos con la naturaleza ayuda a construir un mundo mejor, y la
+        escucha profunda es una buena forma de empezar. Necesitamos comunidades
+        que se escuchen entre sí y a su entorno para ser más resilientes y vivir
+        en armonía con el planeta.
+      </p>
+      <p>
+        Conexiones más profundas con la naturaleza que ayuden a su conservación y
+        restauración desde la escucha y el sonido. Una de las formas más honestas
+        de conservar y respetar un lugar es desde su sonido. La escucha y su
+        aumento de calidad es una de las formas más profundas de conectar con
+        algo y/o alguien.
+      </p>
+    </div>
+  </div>
+
+  <div class="connection__image">
+    <img
+      src="/images/connection-river.jpg"
+      alt="Persona caminando junto a un río en la selva, escuchando el entorno"
+      loading="lazy"
+    />
+  </div>
+</section>
+
+<style>
+  .connection__title {
+    font-size: clamp(2.75rem, 5.5vw, 3.25rem);
+    max-width: 24ch;
+    margin-bottom: 1.5rem;
+  }
+
+  .connection__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(1.5rem, 4vw, 3rem);
+    color: var(--color-ink-soft);
+    margin-bottom: clamp(2rem, 5vw, 3.5rem);
+  }
+
+  .connection__image img {
+    width: 100%;
+    height: clamp(18rem, 40vw, 30rem);
+    object-fit: cover;
+    border-radius: var(--radius);
+  }
+
+  @media (max-width: 780px) {
+    .connection__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

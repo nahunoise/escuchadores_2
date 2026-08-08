@@ -1,0 +1,54 @@
+---
+---
+
+<section id="nosotros" class="section section--cream intro reveal">
+  <div class="wrap intro__grid">
+    <h2 class="intro__lead">
+      Si hay vida, hay sonido. Los sonidos nos atraviesan, nos calman y transforman
+      nuestra relación con el entorno.
+    </h2>
+
+    <div class="intro__body">
+      <p>
+        Creamos artefactos de escucha e instalaciones interactivas que invitan a
+        detenerse, escuchar y valorar la riqueza natural del territorio.
+      </p>
+      <p>
+        Diseñado para: <strong>Hoteles de ecoturismo, parques naturales, aulas
+        ambientales y empresas</strong> que buscan conectar con la naturaleza desde
+        una perspectiva sensorial y memorable.
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+
+  .intro {
+    padding-block: clamp(2rem, 7vw, 6rem);
+  }
+
+  .intro__grid {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: start;
+  }
+
+  .intro__lead {
+    font-size: clamp(1.75rem, 2.5vw, 4.25rem);
+    max-width: 22ch;
+  }
+
+  .intro__body {
+    padding-top: 0.1rem;
+    color: var(--color-ink-soft);
+    max-width: 34ch;
+  }
+
+  @media (max-width: 780px) {
+    .intro__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

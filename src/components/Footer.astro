@@ -1,0 +1,123 @@
+---
+const year = new Date().getFullYear();
+
+const socials = [
+  { name: 'LinkedIn', href: 'https://www.linkedin.com/company/escuchadores/?viewAsMember=true', icon: '/icons/linkedin.svg' },
+  { name: 'YouTube', href: 'https://www.youtube.com/channel/UC-MQlYR3nwvRO_dtoJjYSfw', icon: '/icons/youtube.svg' },
+  { name: 'Instagram', href: 'https://www.instagram.com/nahun.saldana/', icon: '/icons/instagram.svg' },
+];
+---
+
+<footer id="contacto" class="section section--sage footer">
+  <div class="wrap footer__inner">
+
+
+    <h2 class="footer__title">¿Nos escuchamos?</h2>
+    <p class="footer__lead">
+      Estamos abiertos a cualquier tipo de colaboración donde el centro de la
+      conversación sea el conocimiento, protección y cuidado de la naturaleza.
+    </p>
+
+    <ul class="footer__contact">
+      <li><a href="mailto:nahun@escuchadores.com">nahun@escuchadores.com</a></li>
+      <li><a href="tel:+34604831787">+34 604 831 787</a></li>
+      <li>Madrid, España</li>
+    </ul>
+
+    <ul class="footer__social">
+      {socials.map((s) => (
+        <li>
+          <a href={s.href} target="_blank" rel="noopener noreferrer" aria-label={s.name}>
+            <img src={s.icon} alt="" width="20" height="20" />
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <p class="footer__meta">© {year} Escuchador. Todos los derechos reservados.</p>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    text-align: center;
+  }
+
+  .footer__inner {
+    max-width: 40rem;
+    margin-inline: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer__logo {
+    height: 36px;
+    width: auto;
+    margin-bottom: 2rem;
+  }
+
+  .footer__title {
+    font-size: clamp(2.75rem, 7.5vw, 3.25rem);
+    margin-bottom: 1.5rem;
+  }
+
+  .footer__lead {
+    color: var(--color-ink);
+    opacity: 0.85;
+    margin-bottom: 2rem;
+  }
+
+  .footer__contact {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+    font-size: 0.95rem;
+  }
+
+  .footer__contact a {
+    text-decoration: none;
+    color: black;
+  }
+
+  .footer__contact a:hover {
+    text-decoration: underline;
+  }
+
+  .footer__social {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .footer__social a {
+    display: inline-flex;
+    opacity: 0.75;
+    transition: opacity 0.2s ease;
+  }
+
+  .footer__social a:hover {
+    opacity: 1;
+  }
+
+  .footer__meta {
+    font-size: 0.75rem;
+    opacity: 0.7;
+    margin: 0;
+  }
+
+  .footer__social a {
+  display: inline-flex;
+  opacity: 0.75;
+  transition: opacity 0.2s ease;
+}
+
+.footer__social a:hover {
+  opacity: 1;
+}
+
+.footer__social img {
+  filter: brightness(0);
+}
+</style>

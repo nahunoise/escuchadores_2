@@ -1,0 +1,137 @@
+---
+const cases = [
+  {
+    title: 'Un Escuchador para proteger a un especie vulnerable al ruido.',
+    place: 'Parque Nacional Tingo María (Perú)',
+    image: '/images/case-tingo-maria.jpg',
+    alt: 'Persona observando un árbol de gran tamaño en la selva',
+  },
+  {
+    title: 'Panal de abejas sonoro. Interactivo para niños y adultos',
+    place: 'Aula Apícola Hoyo de Manzanares (España)',
+    image: '/images/case-apicola.jpg',
+    alt: 'Instalación interactiva de panal de abejas sonoro en un aula',
+  },
+  {
+    title: 'Registro e Identificación Sonora en una finca ibérica',
+    place: 'La Rinconada (España)',
+    image: '/images/case-finca-iberica.jpg',
+    alt: 'Dispositivo de grabación sonora instalado en el campo',
+  },
+  {
+    title: 'Escuchar como una mariposa',
+    place: 'Utrecht (Países Bajos)',
+    image: '/images/case-mariposas.jpg',
+    alt: 'Mariposa posada sobre una hoja',
+  },
+];
+---
+
+<section id="casos-de-exito" class="section section--cream cases reveal">
+  <div class="wrap">
+    <p class="eyebrow_inner">Casos de éxito</p>
+    <p class="cases__intro">
+      Trabajamos con distinto tipos de organizaciones en diferentes ecosistemas,
+      desde la selva tropical hasta paisajes ibéricos y mediterráneos. Todos estos
+      proyectos han sido posibles gracias a la colaboración mutua con diversas
+      organizaciones.
+    </p>
+  </div>
+
+  <div class="cases__grid">
+    {cases.map((item) => (
+      <article class="case-card">
+        <img src={item.image} alt={item.alt} loading="lazy" />
+        <div class="case-card__body">
+          <h3>{item.title}</h3>
+          <p>{item.place}</p>
+        </div>
+      </article>
+    ))}
+  </div>
+</section>
+
+<style>
+  .cases {
+    padding-block: clamp(3rem, 8vw, 6rem);
+  }
+
+  .eyebrow_inner {
+  text-align: center;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 800;
+}
+  .cases__title {
+    text-align: center;
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 800;
+  }
+
+  .cases__intro {
+    max-width: 60ch;
+    margin: 0 auto 2.5rem;
+    text-align: center;
+    color: var(--color-ink-soft);
+  }
+
+  .cases__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+  }
+
+  .case-card {
+    position: relative;
+    aspect-ratio: 3 / 4;
+    overflow: hidden;
+    border-radius: 10px;
+    color: #ffffff;
+  }
+
+  .case-card img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .case-card__body {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 1.25rem;
+    background: linear-gradient(180deg, rgba(10, 15, 8, 0) 45%, rgba(10, 15, 8, 0.78) 100%);
+  }
+
+  .case-card__body h3 {
+    font-size: 2rem;
+    margin-bottom: 0.4em;
+    color: #ffffff;
+  }
+
+  .case-card__body p {
+    font-size: 0.8rem;
+    margin: 0;
+    color: #ffffff;
+    opacity: 0.9;
+  }
+
+  @media (max-width: 900px) {
+    .cases__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 520px) {
+    .cases__grid {
+      grid-template-columns: 1fr;
+      gap: 0.85rem;
+    }
+  }
+</style>

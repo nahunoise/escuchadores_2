@@ -1,0 +1,115 @@
+---
+const services = [
+  {
+    title: 'Recorridos guiados de escucha',
+    description:
+      'Rutas sensoriales por senderos naturales donde el grupo aprende a identificar y valorar los sonidos del ecosistema local. Diseñamos itinerarios de escucha, actividades de inmersión auditiva y narrativas sonoras que aumentan el atractivo turístico y el valor de tu oferta de ecoturismo.',
+    src: '/images/services-1.jpg',
+    alt: 'Persona caminando en un sendero dentro del bosque',
+  },
+  {
+    title: 'Diseño e Instalación de Artefactos de Escucha',
+    description:
+      'Creamos esculturas e instalaciones arquitectónicas/sonoras adaptadas a tu entorno o evento. Artefactos que amplifican los sonidos de la naturaleza y se convierten en un punto de interés visual y sensorial para tus huéspedes, visitantes y asistentes.',
+    src: '/images/services-2.jpg',
+    alt: 'Dos personas revisando un mapa al aire libre',
+  },
+  {
+    title: 'Talleres y formación',
+    description:
+      'Sesiones prácticas para equipos y comunidades sobre escucha activa, grabación de campo e identificación de especies por sonido. Desarrollamos material didáctico, instalaciones interactivas y talleres pedagógicos para acercar la ecología acústica a niños, familias y comunidades.',
+    src: '/images/services-3.png',
+    alt: 'Grupo de personas reunido bajo un toldo en el bosque durante un taller',
+  },
+  {
+    title: 'Puesta en Valor del Patrimonio Sonoro (Paisajismo Acústico)',
+    description:
+      'Identificamos y catalogamos los sonidos distintivos de tu espacio natural para crear narrativas de marca, audios guías o elementos de interpretación ambiental.',
+    src: '/images/services-4.jpg',
+    alt: 'Vista de un lago rodeado de vegetación',
+  },
+];
+---
+
+<section id="servicios" class="section section--cream services reveal">
+  <div class="wrap services__intro">
+    <p class="eyebrow_inner">Servicios desde la naturaleza</p>
+    <p class="services__lead">
+      Ofrecemos diferentes tipos de servicio a medida de la empresa y de sus
+      ecosistemas más cercanos.
+    </p>
+  </div>
+
+  <div class="wrap">
+    <div class="services__grid">
+      {services.map((s) => (
+        <article class="service-card">
+          <div class="service-card__frame">
+            <img src={s.src} alt={s.alt} loading="lazy" />
+          </div>
+          <h3 class="service-card__title">{s.title}</h3>
+          <p class="service-card__desc">{s.description}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .services__intro {
+    text-align: center;
+    margin-bottom: 2rem;
+    padding-block: clamp(3rem, 8vw, 6rem);
+  }
+
+  .eyebrow_inner {
+    font-clamp: 1.75rem, 9.5vw, 3rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 800;
+  }
+
+  .services__lead {
+    font-size: 1.1rem;
+    max-width: 40ch;
+    margin: 0.5rem auto 0;
+    color: var(--color-ink-soft);
+  }
+
+ .services__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 4rem 3rem;
+  padding-bottom: clamp(3rem, 8vw, 6rem);
+}
+
+  .service-card__frame {
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 1.25rem;
+  }
+
+  .service-card__frame img {
+    width: 100%;
+    height: clamp(14rem, 24vw, 20rem);
+    object-fit: cover;
+    display: block;
+  }
+
+  .service-card__title {
+  font-size: clamp(1.5rem, 2.2vw, 1.85rem);
+  margin-bottom: 0.5rem;
+}
+  .service-card__desc {
+    font-size: 0.9rem;
+    color: var(--color-ink-soft);
+    max-width: 70ch;
+  }
+
+  @media (max-width: 720px) {
+    .services__grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+  }
+</style>

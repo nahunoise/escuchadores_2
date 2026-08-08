@@ -1,0 +1,106 @@
+---
+const navLinks = [
+  { label: 'Nosotros', href: '#nosotros' },
+  { label: 'Casos de éxito', href: '#casos-de-exito' },
+  { label: 'Servicios', href: '#servicios' },
+  { label: 'Contacto', href: '#contacto' },
+];
+---
+
+<header class="site-header">
+  <div class="wrap site-header__inner">
+    <a href="/" class="site-header__logo" aria-label="Escuchador — inicio">
+      <img
+        src="/images/logo.png"
+        alt="Escuchador"
+        class="site-header__logo-img"
+      />
+    </a>
+
+    <nav class="site-header__nav" aria-label="Navegación principal">
+      <ul>
+        {navLinks.map((link) => (
+          <li><a href={link.href}>{link.label}</a></li>
+        ))}
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    position: absolute;
+    inset-inline: 0;
+    top: 0;
+    z-index: 10;
+    padding-block: 1.5rem;
+  }
+
+  .site-header__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .site-header__logo {
+    display: inline-flex;
+  }
+
+  .site-header__logo-img {
+    height: 94px; /* ajusta a la altura real de tu logo */
+    width: auto;
+  }
+
+  .site-header__nav ul {
+    display: flex;
+    gap: 1.75rem;
+  }
+
+  .site-header__nav a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 0.7rem;
+    font-family: var(--font-sans);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 600;
+    opacity: 0.9;
+  }
+
+  .site-header__nav a:hover {
+    opacity: 1;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    color: #ffffff;
+  }
+
+  @media (max-width: 640px) {
+    .site-header__logo-img {
+      height: 60px;
+    }
+    .site-header__nav ul {
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+  }
+
+  .site-header__logo-img {
+  animation: spin 45s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-header__logo-img {
+    animation: none;
+  }
+}
+</style>
