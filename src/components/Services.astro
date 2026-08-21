@@ -1,34 +1,30 @@
 ---
 const services = [
   {
-    title: 'Recorridos guiados de escucha',
+    title: 'Instalaciones & Pabellones Sensoriales',
     description:
-      'Rutas sensoriales por senderos naturales donde el grupo aprende a identificar y valorar los sonidos del ecosistema local. Diseñamos itinerarios de escucha, actividades de inmersión auditiva y narrativas sonoras que aumentan el atractivo turístico y el valor de tu oferta de ecoturismo.',
+      'Experiencias inmersivas site-specific desde artefactos de escucha en entornos naturales, hasta el diseño de sonido multicanal e interacciones vivo/datos para Museos, Festivales, Marcas (CSR), Hoteles. Creamos artefactos que amplifican los sonidos de la naturaleza y se convierten en un punto de interés visual y sensorial para tus huéspedes, visitantes y asistentes.',
     src: '/images/services-1.jpg',
     alt: 'Persona caminando en un sendero dentro del bosque',
+     url: 'https://www.escuchador.es',
   },
   {
-    title: 'Diseño e Instalación de Artefactos de Escucha',
+    title: 'Laboratorio de Escucha, Bienestar y Futuros estratégicos',
     description:
-      'Creamos esculturas e instalaciones arquitectónicas/sonoras adaptadas a tu entorno o evento. Artefactos que amplifican los sonidos de la naturaleza y se convierten en un punto de interés visual y sensorial para tus huéspedes, visitantes y asistentes.',
+      'Sesiones prácticas para equipos y comunidades sobre escucha activa, grabación de campo e identificación de especies por sonido. Desarrollamos material didáctico, instalaciones interactivas y talleres pedagógicos para acercar la ecología acústica a niños, familias y comunidades.Workshops de diseño especulativo, gobernanza no-humana y prototipado sonoro de futuros climáticos.',
     src: '/images/services-2.jpg',
     alt: 'Dos personas revisando un mapa al aire libre',
     url: 'https://www.escuchador.es',
   },
   {
-    title: 'Talleres y formación',
+    title: 'Storytelling de impacto Sonoro',
     description:
-      'Sesiones prácticas para equipos y comunidades sobre escucha activa, grabación de campo e identificación de especies por sonido. Desarrollamos material didáctico, instalaciones interactivas y talleres pedagógicos para acercar la ecología acústica a niños, familias y comunidades.',
-    src: '/images/services-3.png',
+      'Convierte tus datos de impacto ambiental en experiencias sonoras inmersivas y narrativas de marca. Diseñamos experiencias de escucha que conectan a las personas con la naturaleza y su entorno, generando conciencia y compromiso con la conservación.',
+    src: '/images/services-3.jpg',
     alt: 'Grupo de personas reunido bajo un toldo en el bosque durante un taller',
+    url: 'https://www.escuchador.es',
   },
-  {
-    title: 'Puesta en Valor del Patrimonio Sonoro (Paisajismo Acústico)',
-    description:
-      'Identificamos y catalogamos los sonidos distintivos de tu espacio natural para crear narrativas de marca, audios guías o elementos de interpretación ambiental.',
-    src: '/images/services-4.jpg',
-    alt: 'Vista de un lago rodeado de vegetación',
-  },
+  
 ];
 ---
 
@@ -70,16 +66,18 @@ const services = [
     margin-bottom: 2rem;
     padding-block: clamp(3rem, 8vw, 6rem);
   }
-a.service-card {
-  text-decoration: none;
-  color: inherit;
-  cursor: pointer;
-  transition: opacity 0.2s ease;
-}
 
-a.service-card:hover {
-  opacity: 0.85;
-}
+  a.service-card {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+  }
+
+  a.service-card:hover {
+    opacity: 0.85;
+  }
+
   .eyebrow_inner {
     font-clamp: 1.75rem, 9.5vw, 3rem;
     letter-spacing: 0.12em;
@@ -94,34 +92,50 @@ a.service-card:hover {
     color: var(--color-ink-soft);
   }
 
- .services__grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 4rem 3rem;
-  padding-bottom: clamp(3rem, 8vw, 6rem);
-}
+  .services__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem 2.5rem;
+    padding-bottom: clamp(3rem, 8vw, 6rem);
+  }
+
+  .service-card {
+    text-align: center;
+  }
 
   .service-card__frame {
-    border-radius: 10px;
+    width: clamp(10rem, 16vw, 14rem);
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
     overflow: hidden;
-    margin-bottom: 1.25rem;
+    margin: 0 auto 1.25rem;
   }
 
   .service-card__frame img {
     width: 100%;
-    height: clamp(14rem, 24vw, 20rem);
+    height: 100%;
     object-fit: cover;
     display: block;
+    filter: grayscale(1) contrast(1.02);
   }
 
   .service-card__title {
-  font-size: clamp(1.5rem, 2.2vw, 1.85rem);
-  margin-bottom: 0.5rem;
-}
+    font-size: clamp(1.3rem, 1.8vw, 1.6rem);
+    margin-bottom: 0.5rem;
+  }
+
   .service-card__desc {
     font-size: 0.9rem;
     color: var(--color-ink-soft);
     max-width: 70ch;
+    margin: 0 auto;
+  }
+
+  @media (max-width: 960px) {
+    .services__grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2.5rem 2rem;
+    }
   }
 
   @media (max-width: 720px) {
