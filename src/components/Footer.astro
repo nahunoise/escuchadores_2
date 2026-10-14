@@ -4,24 +4,28 @@ const year = new Date().getFullYear();
 const socials = [
   { name: 'LinkedIn', href: 'https://www.linkedin.com/company/escuchadores/?viewAsMember=true', icon: '/icons/linkedin.svg' },
   { name: 'YouTube', href: 'https://www.youtube.com/channel/UC-MQlYR3nwvRO_dtoJjYSfw', icon: '/icons/youtube.svg' },
-  { name: 'Instagram', href: 'https://www.instagram.com/nahun.saldana/', icon: '/icons/instagram.svg' },
+  { name: 'Instagram', href: 'https://www.instagram.com/escuchadores', icon: '/icons/instagram.svg' },
 ];
 ---
 
-<footer id="contacto" class="section section--sage footer">
+<footer id="contact" class="section section--sage footer">
   <div class="wrap footer__inner">
-
-
-    <h2 class="footer__title">¿Nos escuchamos?</h2>
+    <h2 class="footer__title">Shall we listen?</h2>
     <p class="footer__lead">
-      Estamos abiertos a cualquier tipo de colaboración donde el centro de la
-      conversación sea el conocimiento, protección y cuidado de la naturaleza.
+      We are open to any collaboration where the core of the conversation revolves around knowing, protecting, and caring for nature.
     </p>
+
+    <!-- Botón principal para agendar la reunión -->
+    <div class="footer__cta-wrap">
+      <button id="open-booking-btn" class="btn btn--booking">
+        Book a Conversation
+      </button>
+    </div>
 
     <ul class="footer__contact">
       <li><a href="mailto:nahun@escuchadores.com">nahun@escuchadores.com</a></li>
       <li><a href="tel:+34604831787">+34 604 831 787</a></li>
-      <li>Madrid, España</li>
+      <li>Madrid, Spain</li>
     </ul>
 
     <ul class="footer__social">
@@ -34,8 +38,24 @@ const socials = [
       ))}
     </ul>
 
-    <p class="footer__meta">© {year} Escuchador. Todos los derechos reservados.</p>
+    <p class="footer__meta">© {year} Escuchador. All rights reserved.</p>
   </div>
+
+  <!-- Modal emergente para agendar -->
+  <dialog id="booking-modal" class="booking-modal">
+    <div class="booking-modal__content">
+      <button id="close-booking-btn" class="booking-modal__close" aria-label="Close modal">
+        &times;
+      </button>
+      <iframe
+        src="https://zcal.co/i/s_D31LiP?embed=1&embedType=iframe"
+        loading="lazy"
+        id="zcal-invite"
+        scrolling="yes"
+        title="Book a discovery conversation"
+      ></iframe>
+    </div>
+  </dialog>
 </footer>
 
 <style>
@@ -51,12 +71,6 @@ const socials = [
     align-items: center;
   }
 
-  .footer__logo {
-    height: 36px;
-    width: auto;
-    margin-bottom: 2rem;
-  }
-
   .footer__title {
     font-size: clamp(2.75rem, 7.5vw, 3.25rem);
     margin-bottom: 1.5rem;
@@ -66,6 +80,26 @@ const socials = [
     color: var(--color-ink);
     opacity: 0.85;
     margin-bottom: 2rem;
+  }
+
+  .footer__cta-wrap {
+    margin-bottom: 2.5rem;
+  }
+
+  .btn--booking {
+    cursor: pointer;
+    border: none;
+    padding: 1rem 2.25rem;
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    border-radius: 999px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+
+  .btn--booking:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
   }
 
   .footer__contact {
@@ -101,23 +135,120 @@ const socials = [
     opacity: 1;
   }
 
+  .footer__social img {
+    filter: brightness(0);
+  }
+
   .footer__meta {
     font-size: 0.75rem;
     opacity: 0.7;
     margin: 0;
   }
 
-  .footer__social a {
-  display: inline-flex;
-  opacity: 0.75;
-  transition: opacity 0.2s ease;
-}
+  /* Estilos corregidos del Modal */
+  .booking-modal {
+    border: none;
+    border-radius: 16px;
+    padding: 0;
+    width: min(92vw, 900px);
+    background: #ffffff;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+    margin: auto;
+  }
 
-.footer__social a:hover {
-  opacity: 1;
-}
+  .booking-modal::backdrop {
+    background: rgba(10, 15, 8, 0.65);
+    backdrop-filter: blur(4px);
+  }
 
-.footer__social img {
-  filter: brightness(0);
-}
+  .booking-modal__content {
+    position: relative;
+    width: 100%;
+    height: 85vh;
+    max-height: 780px;
+    padding-top: 2.5rem;
+    box-sizing: border-border-box;
+    overflow-y: auto; /* Permite scroll si la pantalla es pequeña */
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .booking-modal__close {
+    position: absolute;
+    top: 12px;
+    right: 18px;
+    background: #f0f0f0;
+    border: none;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    font-size: 1.5rem;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #1a2218;
+    z-index: 10;
+    transition: background-color 0.2s ease;
+  }
+
+  .booking-modal__close:hover {
+    background: #e0e0e0;
+  }
+
+  .booking-modal iframe {
+    width: 100%;
+    height: 100%;
+    min-height: 700px;
+    border: none;
+    display: block;
+  }
+
+  @media (max-width: 640px) {
+    .booking-modal {
+      width: 96vw;
+    }
+    
+    .booking-modal__content {
+      height: 90vh;
+      padding-top: 3rem;
+    }
+  }
 </style>
+
+<script>
+  function setupBookingModal() {
+    const openBtn = document.getElementById('open-booking-btn');
+    const closeBtn = document.getElementById('close-booking-btn');
+    const modal = document.getElementById('booking-modal') as HTMLDialogElement | null;
+
+    if (openBtn && modal) {
+      openBtn.addEventListener('click', () => {
+        modal.showModal();
+      });
+    }
+
+    if (closeBtn && modal) {
+      closeBtn.addEventListener('click', () => {
+        modal.close();
+      });
+    }
+
+    if (modal) {
+      modal.addEventListener('click', (e) => {
+        const dialogDimensions = modal.getBoundingClientRect();
+        if (
+          e.clientX < dialogDimensions.left ||
+          e.clientX > dialogDimensions.right ||
+          e.clientY < dialogDimensions.top ||
+          e.clientY > dialogDimensions.bottom
+        ) {
+          modal.close();
+        }
+      });
+    }
+  }
+
+  setupBookingModal();
+  document.addEventListener('astro:page-load', setupBookingModal);
+</script>

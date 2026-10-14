@@ -1,31 +1,41 @@
 ---
 ---
 
-<section id="nosotros" class="section section--cream intro reveal">
+<section id="about" class="section section--cream intro reveal">
   <div class="wrap intro__grid">
-    <h2 class="intro__lead">
-      Si hay vida, hay sonido. Los sonidos nos atraviesan, nos calman y transforman
-      nuestra relación con el entorno.
-    </h2>
+    <div class="intro__header">
+      <p class="eyebrow_inner">Our Philosophy</p>
+      <h2 class="intro__lead">
+        If there is life, there is sound. The soundscape is the most honest metric of an ecosystem's health.
+      </h2>
+    </div>
 
     <div class="intro__body">
-      <p>
-        Creamos artefactos de escucha e instalaciones interactivas que invitan a
-        detenerse, escuchar y valorar la riqueza natural del territorio.
+      <p class="intro__summary">
+        We combine acoustic ecology and spatial design to transform natural soundscapes into <strong>auditable biodiversity data</strong> and <strong>immersive wellness experiences</strong>.
       </p>
-      <p>
-        Diseñado para: <strong>Hoteles de ecoturismo, parques naturales, aulas
-        ambientales y empresas</strong> que buscan conectar con la naturaleza desde
-        una perspectiva sensorial y memorable.
-      </p>
+
+      <div class="intro__target">
+        <p class="intro__target-title">Solutions designed for:</p>
+        <ul class="intro__list">
+          <li>
+            <strong>ESG corporations & enterprises:</strong> Tangible impact activations and biodiversity metrics.
+          </li>
+          <li>
+            <strong>Ecotourism & sustainable resorts:</strong> High-value sensory differentiation for guests.
+          </li>
+          <li>
+            <strong>Natural parks & Smart Cities:</strong> Biomonitoring infrastructure and environmental education.
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>
 
 <style>
-
   .intro {
-    padding-block: clamp(2rem, 7vw, 6rem);
+    padding-block: clamp(3rem, 7vw, 6rem);
   }
 
   .intro__grid {
@@ -35,20 +45,86 @@
     align-items: start;
   }
 
+  .eyebrow_inner {
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 800;
+    color: var(--color-ink-muted, #5a6558);
+    margin-bottom: 0.75rem;
+  }
+
   .intro__lead {
-    font-size: clamp(1.75rem, 2.5vw, 4.25rem);
-    max-width: 22ch;
+    font-size: clamp(1.75rem, 2.5vw, 2.8rem);
+    line-height: 1.2;
+    max-width: 24ch;
+    color: var(--color-ink, #1a2218);
   }
 
   .intro__body {
-    padding-top: 0.1rem;
-    color: var(--color-ink-soft);
-    max-width: 34ch;
+    padding-top: 0.5rem;
+    color: var(--color-ink-soft, #445042);
+    max-width: 48ch; 
+  }
+
+  .intro__summary {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    margin-bottom: 1.75rem;
+  }
+
+  .intro__target-title {
+    font-size: 0.85rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-ink, #1a2218);
+    margin-bottom: 0.75rem;
+  }
+
+  .intro__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+  }
+
+  .intro__list li {
+    font-size: 0.95rem;
+    line-height: 1.45;
+    position: relative;
+    padding-left: 1.2rem;
+  }
+
+  .intro__list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.55em;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--color-accent, #3d6837);
+  }
+
+  .intro__list strong {
+    color: var(--color-ink, #1a2218);
   }
 
   @media (max-width: 780px) {
     .intro__grid {
       grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .intro__lead {
+      max-width: 100%;
+    }
+
+    .intro__body {
+      max-width: 100%;
     }
   }
 </style>

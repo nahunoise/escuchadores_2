@@ -1,114 +1,122 @@
 ---
 const services = [
   {
-    title: 'Instalaciones & Pabellones Sensoriales',
+    title: 'Biomonitoring & Biodiversity Data',
+    badge: 'Data & ESG',
+    tagline: 'What is not heard is not measured. What is heard is managed.',
     description:
-      'Experiencias inmersivas site-specific desde artefactos de escucha en entornos naturales, hasta el diseño de sonido multicanal e interacciones vivo/datos para Museos, Festivales, Marcas (CSR), Hoteles. Creamos artefactos que amplifican los sonidos de la naturaleza y se convierten en un punto de interés visual y sensorial para tus huéspedes, visitantes y asistentes.',
+      'Continuous ecoacoustic sensors and analysis to measure restoration returns in reserves, farms, and sustainable developments.',
     src: '/images/services-1.jpg',
-    alt: 'Persona caminando en un sendero dentro del bosque',
-     url: 'https://www.escuchador.es',
+    alt: 'Person walking on a forest trail',
+    url: 'https://zcal.co/i/s_D31LiP',
   },
   {
-    title: 'Laboratorio de Escucha, Bienestar y Futuros estratégicos',
+    title: 'Sound Infrastructure (Artifacts)',
+    badge: 'Spatial Design',
+    tagline: 'Regeneration and well-being for people.',
     description:
-      'Sesiones prácticas para equipos y comunidades sobre escucha activa, grabación de campo e identificación de especies por sonido. Desarrollamos material didáctico, instalaciones interactivas y talleres pedagógicos para acercar la ecología acústica a niños, familias y comunidades.Workshops de diseño especulativo, gobernanza no-humana y prototipado sonoro de futuros climáticos.',
+      'Sculptures and passive listening modules installed in public parks, reserves, or corporate headquarters to foster mental health.',
     src: '/images/services-2.jpg',
-    alt: 'Dos personas revisando un mapa al aire libre',
-    url: 'https://www.escuchador.es',
+    alt: 'Two people reviewing a map outdoors',
+    url: 'https://zcal.co/i/s_D31LiP',
   },
   {
-    title: 'Storytelling de impacto Sonoro',
+    title: 'Impact Storytelling & Workshops',
+    badge: 'Culture & Innovation',
+    tagline: 'Immersive experiences with purpose.',
     description:
-      'Convierte tus datos de impacto ambiental en experiencias sonoras inmersivas y narrativas de marca. Diseñamos experiencias de escucha que conectan a las personas con la naturaleza y su entorno, generando conciencia y compromiso con la conservación.',
+      'Participatory design labs that transform biodiversity data into brand activations and territorial narratives.',
     src: '/images/services-3.jpg',
-    alt: 'Grupo de personas reunido bajo un toldo en el bosque durante un taller',
-    url: 'https://www.escuchador.es',
+    alt: 'Group gathered under a canopy in the forest during a workshop',
+    url: 'https://zcal.co/i/s_D31LiP',
   },
-  
 ];
 ---
 
-<section id="servicios" class="section section--cream services reveal">
+<section id="services" class="section section--cream services reveal">
   <div class="wrap services__intro">
-    <p class="eyebrow_inner">Servicios desde la naturaleza</p>
-    <p class="services__lead">
-      Ofrecemos diferentes tipos de servicio a medida de la empresa y de sus
-      ecosistemas más cercanos.
-    </p>
+    <p class="eyebrow_inner">Services from nature</p>
+
+    <h2 class="services__title">
+      Tailored solutions for businesses, institutions, and territories
+    </h2>
   </div>
 
   <div class="wrap">
     <div class="services__grid">
-     {services.map((s) => {
-  const CardTag = s.url ? 'a' : 'div';
-  return (
-    <CardTag
-      class="service-card"
-      href={s.url}
-      target={s.url ? '_blank' : undefined}
-      rel={s.url ? 'noopener noreferrer' : undefined}
-    >
-      <div class="service-card__frame">
-        <img src={s.src} alt={s.alt} loading="lazy" />
-      </div>
-      <h3 class="service-card__title">{s.title}</h3>
-      <p class="service-card__desc">{s.description}</p>
-    </CardTag>
-  );
-})}
+      {services.map((s) => {
+        const CardTag = s.url ? 'a' : 'div';
+        return (
+          <CardTag
+            class="service-card"
+            href={s.url}
+            target={s.url ? '_blank' : undefined}
+            rel={s.url ? 'noopener noreferrer' : undefined}
+          >
+            <div class="service-card__frame">
+              <img src={s.src} alt={s.alt} loading="lazy" />
+            </div>
+            <span class="service-card__badge">{s.badge}</span>
+            <h3 class="service-card__title">{s.title}</h3>
+            <p class="service-card__tagline">{s.tagline}</p>
+            <p class="service-card__desc">{s.description}</p>
+          </CardTag>
+        );
+      })}
     </div>
   </div>
 </section>
 
 <style>
+  .services {
+    padding-block: clamp(3.5rem, 6vw, 6rem);
+  }
+
   .services__intro {
     text-align: center;
-    margin-bottom: 2rem;
-    padding-block: clamp(3rem, 8vw, 6rem);
+    margin-bottom: clamp(2.5rem, 4vw, 3.5rem);
+  }
+
+  .eyebrow_inner {
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 800;
+    color: var(--color-ink-muted, #5a6558);
+    margin-bottom: 0.5rem;
+  }
+
+  .services__title {
+    font-size: clamp(1.75rem, 2.5vw, 2.5rem);
+    max-width: 26ch;
+    margin: 0 auto;
+    color: var(--color-ink, #1a2218);
+    line-height: 1.2;
+  }
+
+  .services__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(2rem, 3.5vw, 3rem);
   }
 
   a.service-card {
     text-decoration: none;
     color: inherit;
     cursor: pointer;
-    transition: opacity 0.2s ease;
-  }
-
-  a.service-card:hover {
-    opacity: 0.85;
-  }
-
-  .eyebrow_inner {
-    font-clamp: 1.75rem, 9.5vw, 3rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    font-weight: 800;
-  }
-
-  .services__lead {
-    font-size: 1.1rem;
-    max-width: 40ch;
-    margin: 0.5rem auto 0;
-    color: var(--color-ink-soft);
-  }
-
-  .services__grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 3rem 2.5rem;
-    padding-bottom: clamp(3rem, 8vw, 6rem);
-  }
-
-  .service-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
   }
 
   .service-card__frame {
-    width: clamp(10rem, 16vw, 14rem);
+    width: clamp(9rem, 14vw, 12rem);
     aspect-ratio: 1 / 1;
     border-radius: 50%;
     overflow: hidden;
-    margin: 0 auto 1.25rem;
+    margin-bottom: 1.25rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   }
 
   .service-card__frame img {
@@ -117,17 +125,48 @@ const services = [
     object-fit: cover;
     display: block;
     filter: grayscale(1) contrast(1.02);
+    transition: filter 0.35s ease, transform 0.35s ease;
+  }
+
+  /* Visual hover micro-interaction */
+  a.service-card:hover .service-card__frame img {
+    filter: grayscale(0) contrast(1);
+    transform: scale(1.05);
+  }
+
+  .service-card__badge {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 0.2rem 0.55rem;
+    background: var(--color-badge-bg, #edf3ec);
+    color: var(--color-badge-text, #2d4f28);
+    border-radius: 4px;
+    margin-bottom: 0.75rem;
   }
 
   .service-card__title {
-    font-size: clamp(1.3rem, 1.8vw, 1.6rem);
+    font-size: clamp(1.2rem, 1.6vw, 1.4rem);
+    font-weight: 700;
+    color: var(--color-ink, #1a2218);
+    margin-bottom: 0.4rem;
+    line-height: 1.25;
+  }
+
+  .service-card__tagline {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--color-accent, #3d6837);
     margin-bottom: 0.5rem;
+    max-width: 32ch;
   }
 
   .service-card__desc {
     font-size: 0.9rem;
-    color: var(--color-ink-soft);
-    max-width: 70ch;
+    line-height: 1.5;
+    color: var(--color-ink-soft, #445042);
+    max-width: 36ch;
     margin: 0 auto;
   }
 
@@ -138,10 +177,10 @@ const services = [
     }
   }
 
-  @media (max-width: 720px) {
+  @media (max-width: 640px) {
     .services__grid {
       grid-template-columns: 1fr;
-      gap: 2rem;
+      gap: 2.5rem;
     }
   }
 </style>

@@ -4,17 +4,20 @@ export interface Props {
   description?: string;
   image?: string;
 }
+
 const {
-  title = "Escuchador — El sonido de la naturaleza, convertido en experiencia",
-  description = "Creamos artefactos de escucha e instalaciones interactivas que invitan a detenerse, escuchar y valorar la riqueza natural del territorio.",
+  title = "Escuchador — The sound of nature, transformed into experience",
+  description = "We create listening artifacts and interactive installations that invite you to pause, listen, and value the natural richness of the territory.",
   image = "/images/og-cover.jpg",
 } = Astro.props;
 
-const canonicalURL = new URL(Astro.url.pathname, Astro.site);
-const socialImageURL = new URL(image, Astro.site);
+// Solución al error: Fallback a URL actual u origen si Astro.site no está definido
+const siteBase = Astro.site || Astro.url.origin || 'https://www.escuchador.es';
+const canonicalURL = new URL(Astro.url.pathname, siteBase);
+const socialImageURL = new URL(image, siteBase);
 ---
 <!doctype html>
-<html lang="es">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -32,7 +35,7 @@ const socialImageURL = new URL(image, Astro.site);
     <meta property="og:image" content={socialImageURL} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:locale" content="es_ES" />
+    <meta property="og:locale" content="en_US" />
 
     <!-- Twitter / X -->
     <meta name="twitter:card" content="summary_large_image" />
@@ -59,13 +62,13 @@ const socialImageURL = new URL(image, Astro.site);
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
               entry.target.classList.add('is-visible');
-              observer.unobserve(entry.target); // solo se anima una vez
+              observer.unobserve(entry.target); // Animates once
             }
           });
         },
         {
-          threshold: 0.15, // se activa cuando el 15% del elemento es visible
-          rootMargin: '0px 0px -60px 0px', // dispara un poco antes de tocar el borde
+          threshold: 0.15, // Triggers when 15% of the element is visible
+          rootMargin: '0px 0px -60px 0px',
         }
       );
 
@@ -76,15 +79,15 @@ const socialImageURL = new URL(image, Astro.site);
 
 <style is:global>
   :root {
-    /* Paleta tomada del diseño: verde salvia de fondo + negro cálido para acentos */
-    --color-bg: #8a8c74;
+    /* Color palette: Sage green background + Warm black for accents */
+    --color-bg: #ebebeb;
     --color-bg-dark: #14150f;
     --color-text: #1c1d16;
     --color-text-light: #f7f6f1;
     --color-line: rgba(28, 29, 22, 0.15);
 
-   --font-display: "Instrument Serif", serif;
-   --font-body: "Inter", sans-serif;
+    --font-display: "Instrument Serif", serif;
+    --font-body: "Inter", sans-serif;
 
     --container: 1200px;
     --gutter: clamp(1.25rem, 4vw, 3rem);
@@ -119,24 +122,25 @@ const socialImageURL = new URL(image, Astro.site);
   }
 
   h1 {
-  font-family: var(--font-display);
-  font-weight: 400;
-  margin: 2rem 0;
-  line-height: 1.15;
-}
+    font-family: var(--font-display);
+    font-weight: 400;
+    margin: 2rem 0;
+    line-height: 1.15;
+  }
 
-h2 {
-  font-family: var(--font-display);
-  font-weight: 400;
-  margin: 0;
-  line-height: 1.15;
-}
-h3 {
-  font-family: var(--font-display);
-  font-weight: 400;
-  margin: 0;
-  line-height: 1.15;
-}
+  h2 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    margin: 0;
+    line-height: 1.15;
+  }
+
+  h3 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    margin: 0;
+    line-height: 1.15;
+  }
 
   p {
     margin: 0;
@@ -177,30 +181,29 @@ h3 {
     border-radius: 2px;
     transition: opacity 0.2s ease;
   }
+
   .btn:hover {
     opacity: 0.85;
   }
 
   .reveal {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
-}
-
-.reveal.is-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .reveal {
-    opacity: 1;
-    transform: none;
-    transition: none;
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
   }
-}
+
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
 
   @media (prefers-reduced-motion: reduce) {
+    .reveal {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+
     html {
       scroll-behavior: auto;
     }
