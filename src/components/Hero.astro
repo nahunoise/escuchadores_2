@@ -2,18 +2,20 @@
 ---
 
 <section class="hero">
-  <video
-    class="hero__bg"
-    autoplay
-    muted
-    loop
-    playsinline
-    preload="auto"
-    poster="/images/hero-forest.jpg"
-  >
-    <source src="/videos/hero-loop.webm" type="video/webm" />
-    <source src="/videos/hero-loop.mp4" type="video/mp4" />
-  </video>
+<video
+  class="hero__bg"
+  autoplay
+  muted
+  loop
+  playsinline
+  webkit-playsinline
+  preload="auto"
+  poster="/images/hero-forest.jpg"
+>
+  <!-- MP4 primero para compatibilidad con WebKit/iOS -->
+  <source src="/videos/hero-loop.mp4" type="video/mp4" />
+  <source src="/videos/hero-loop.webm" type="video/webm" />
+</video>
   <div class="hero__scrim" aria-hidden="true"></div>
 
   <div class="wrap hero__content">
@@ -71,7 +73,34 @@
     max-width: 30ch;
     color: var(--color-text-light);
   }
-
+.hero__bg.is-paused {
+  display: none;
+}
   /* On mobile, prioritize mobile data: show poster image only */
  
 </style>
+<script>
+  function initHeroVideo() {
+    const video = document.querySelector<HTMLVideoElement>('.hero__bg');
+    if (!video) return;
+
+    // Asegura que las propiedades requeridas por iOS estén activas por código
+    video.muted = true;
+    video.defaultMuted = true;
+    video.playsInline = true;
+
+    const playPromise = video.play();
+
+    if (playPromise !== undefined) {
+      playPromise.catch(() => {
+        // Si iOS bloquea el autoplay (ej. Modo Ahorro de Batería),
+        // se muestra la imagen poster de fallback sin romper la app.
+        video.classList.add('is-paused');
+      });
+    }
+  }
+
+  // Ejecuta la inicialización directa y tras la carga de la página
+  initHeroVideo();
+  document.addEventListener('astro:page-load', initHeroVideo);
+</script>
