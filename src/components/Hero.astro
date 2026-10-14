@@ -2,24 +2,24 @@
 ---
 
 <section class="hero">
-<video
-  class="hero__bg"
-  autoplay
-  muted
-  loop
-  playsinline
-  webkit-playsinline
-  preload="auto"
-  poster="/images/hero-forest.jpg"
->
-  <!-- MP4 primero para compatibilidad con WebKit/iOS -->
-  <source src="/videos/hero-loop.mp4" type="video/mp4" />
-  <source src="/videos/hero-loop.webm" type="video/webm" />
-</video>
+  <video
+    class="hero__bg"
+    autoplay
+    muted
+    loop
+    playsinline
+    webkit-playsinline
+    preload="auto"
+    poster="/images/hero-forest.jpg"
+  >
+    <!-- MP4 primero para compatibilidad con WebKit/iOS -->
+    <source src="/videos/hero-loop.mp4" type="video/mp4" />
+    <source src="/videos/hero-loop.webm" type="video/webm" />
+  </video>
   <div class="hero__scrim" aria-hidden="true"></div>
 
   <div class="wrap hero__content">
-    <p class="eyebrow">We turn the sound of your ecosystem into an asset:  more value and biodiversity data.</p>
+    <p class="eyebrow">We turn the sound of your ecosystem into an asset: more value and biodiversity data.</p>
     <h1 class="hero__title">Just as there are viewpoints, there must be listeners.</h1>
     <p class="eyebrow">Applied acoustic ecology and spatial design for ecosystem regeneration.</p>
     <br>
@@ -35,6 +35,7 @@
     align-items: flex-end;
     overflow: hidden;
     color: var(--color-cream);
+    background: #14150f; /* Fondo oscuro de reserva mientras carga el vídeo/imagen */
   }
 
   .eyebrow {
@@ -73,12 +74,8 @@
     max-width: 30ch;
     color: var(--color-text-light);
   }
-.hero__bg.is-paused {
-  display: none;
-}
-  /* On mobile, prioritize mobile data: show poster image only */
- 
 </style>
+
 <script>
   function initHeroVideo() {
     const video = document.querySelector<HTMLVideoElement>('.hero__bg');
@@ -93,9 +90,8 @@
 
     if (playPromise !== undefined) {
       playPromise.catch(() => {
-        // Si iOS bloquea el autoplay (ej. Modo Ahorro de Batería),
-        // se muestra la imagen poster de fallback sin romper la app.
-        video.classList.add('is-paused');
+        // En caso de que el navegador o iOS bloquee la reproducción automática (ej. Ahorro de batería),
+        // el tag <video> mantendrá renderizada la imagen definida en el atributo 'poster'.
       });
     }
   }
